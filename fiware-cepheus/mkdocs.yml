@@ -1,0 +1,31 @@
+site_name: Fiware-Cepheus
+repo_url: https://github.com/Orange-OpenSource/fiware-cepheus
+site_description: FIWARE Cepheus Documentation
+docs_dir: 'doc'
+markdown_extensions: [toc,fenced_code]
+theme: readthedocs
+extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
+use_directory_urls: false
+pages:
+- 'Home': 'index.md'
+- 'User & programmer guide':
+  - 'Cepheus-CEP':
+    - 'Overview': 'cep/index.md'
+    - 'Configuration': 'cep/configuration.md'
+    - 'NGSI mapping': 'cep/mapping.md'
+    - 'Attributes types': 'cep/types.md'
+    - 'Geospatial types': 'cep/geospatial.md'
+  - 'Cepheus-Broker': 'broker/index.md'
+  - 'Examples':
+    - '1 Rooms and Floors': 'examples/1_RoomsAndFloors/index.md'
+    - '2 Close Shutters': 'examples/2_CloseShutters/index.md'
+    - '3 CEP and Broker': 'examples/3_CepAndBroker/index.md'
+    - '4 CEP and Broker and Orion': 'examples/4_CepAndBrokerAndOrion/index.md'
+    - '5 Temperature Threshold': 'examples/5_TemperatureThreshold/index.md'
+    - '6 Query and Command on Room and Shutter': 'examples/6_QueryAndCommand/index.md'
+    - '7 Metadata mapping': 'examples/7_Metadata/index.md'
+    - '8 Date and GeoPoint': 'examples/8_DateAndGeoPoint/index.md'
+    - '9 Geofencing': 'examples/9_Geofencing/index.md'
+- "Administrator manual":
+  - 'Cepheus-CEP': 'admin/cep.md'
+  - 'Cepheus-Broker': 'admin/broker.md'

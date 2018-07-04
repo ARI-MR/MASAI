@@ -1,0 +1,40 @@
+{
+ "service":"Hannover",
+ "servicePath":"/Messe",
+ "host":"http://localhost:8080",
+  "in":[
+    {
+      "id":"Room1",
+      "type":"Room",
+      "providers":[
+        "http://localhost:8081"
+      ],
+      "attributes":[
+        { "name":"temperature", "type":"double" },
+        { "name":"humidity", "type":"double" },
+	{ "name":"Device", "type":"string" }
+      ]
+    }
+  ],
+  "out":[
+    {
+      "id":"Alert1",
+      "type":"Alert",
+      "attributes":[
+        { "name":"temperature", "type":"double" },
+        { "name":"humidity", "type":"double" },
+	{ "name":"Device", "type":"string" }
+      ],
+      "brokers": [
+        {
+          "url":"http://81.171.6.213:1026",
+          "serviceName": "Hannover",
+          "servicePath": "/Messe"
+        }
+      ]
+    }
+  ],
+  "statements":[
+    "INSERT INTO Alert SELECT temperature, humidity, Device FROM Room Where temperature > 15"
+  ]
+}

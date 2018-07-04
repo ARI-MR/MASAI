@@ -1,0 +1,29 @@
+{"devices": [
+   {"device_id": "device1",
+    "entity_name": "Room1",
+    "entity_type": "Room",
+    "protocol": "MQTT",
+    "timezone": "Europe/Madrid",
+    "attributes": [
+                {
+                "name": "temperature",
+                "type": "double"
+                },
+                {
+                "name": "humidity",
+                "type": "double"
+                },
+		{
+		"name":"Device",
+		"type":"string"
+		}
+    ],
+    "commands": [
+        {
+        "name": "ping",
+        "type": "command"
+        }
+    ]
+   }
+ ]
+}
