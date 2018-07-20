@@ -87,9 +87,7 @@ public class RemoteRegistrations {
                     boolean error = result.getErrorCode() != null || remoteRegistrationId == null;
                     if (error) {
                         logger.warn("failed to register {} to remote broker (will retry later) with error {}", localRegistrationId, result.getErrorCode());
-                    } else {
-                        logger.debug("successfully registered {} to remote broker ({})", localRegistrationId, result.getRegistrationId());
-                    }
+                    } 
                     // On error, keep registerContext for future retry
                     updateRemoteRegistration(localRegistrationId, remoteRegistrationId, error ? registerContext : null);
                 },

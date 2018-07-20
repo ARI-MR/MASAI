@@ -57,8 +57,6 @@ public class NgsiController extends NgsiBaseController {
 
     @Override
     public RegisterContextResponse registerContext(final RegisterContext register) throws RegistrationException, RegistrationPersistenceException {
-        logger.debug("<= registerContext with id:{} duration:{}", register.getRegistrationId(), register.getDuration());
-
         RegisterContextResponse registerContextLocalResponse = new RegisterContextResponse();
         //register new registration or update previous registration (if registrationId != null) or remove registration (if duration = 0)
         registerContextLocalResponse.setRegistrationId(localRegistrations.updateRegistrationContext(register));
@@ -138,7 +136,6 @@ public class NgsiController extends NgsiBaseController {
 
     @Override
     public QueryContextResponse queryContext(final QueryContext query) throws ExecutionException, InterruptedException, MissingRemoteBrokerException {
-        logger.debug("<= queryContext on entities: {}", query.getEntityIdList().toString());
 
         Set<String> attributes = new HashSet<>();
         if (query.getAttributeList() != null) {
@@ -151,7 +148,6 @@ public class NgsiController extends NgsiBaseController {
             // forward to providing application
             final String providerUrl = providingApplication.next().toString();
             HttpHeaders httpHeaders = ngsiClient.getRequestHeaders(providerUrl);
-            logger.debug("=> queryContext forwarded to : {} with Content-Type {}", providerUrl, httpHeaders.getContentType());
             return ngsiClient.queryContext(providerUrl, httpHeaders, query).get();
         }
 
@@ -161,7 +157,6 @@ public class NgsiController extends NgsiBaseController {
         }
         // forward query to remote broker
         HttpHeaders httpHeaders = getRemoteBrokerHeaders(brokerUrl);
-        logger.debug("=> queryContext forwarded to remote broker : {} with Content-Type : {}", brokerUrl, httpHeaders.getContentType());
         return ngsiClient.queryContext(brokerUrl, httpHeaders, query).get();
     }
 
